@@ -1,43 +1,26 @@
-# Airline-Ticket-Prediction-Analysis
-This project focuses on predicting airline ticket prices using a Linear Regression model implemented in Python.
+# Airline Ticket Prediction Analysis
 
-## Description
-The goal of this project is to perform an **Airline ticket prediction analysis** by building a predictive model using Python. The model applies **Linear Regression** to estimate ticket prices based on key factors like time, airline, route, etc.
+This repository contains a Jupyter notebook for exploring airline ticket pricing and building a supervised regression model. The notebook is an educational data-science artifact; its exact features, preprocessing, and results are defined by `PDS_PROJECT.ipynb`.
 
----
+## Contents
 
-## Features
-- Analyze and predict airline ticket prices.
-- Utilizes a Linear Regression model for predictions.
-- Built with Python and relevant data science libraries.
+- `PDS_PROJECT.ipynb` - exploratory analysis, preprocessing, model training, and evaluation.
 
-## Tools and Technologies
-- Python
-- Pandas, NumPy
-- Scikit-learn
-- Matplotlib, Seaborn (for visualizations)
+## Setup
 
-## How to Run
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Arshiya109/Airline-Ticket-Prediction-Analysis.git
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install jupyter pandas numpy scikit-learn matplotlib seaborn
+jupyter notebook
+```
 
-2. Install required dependencies:
-   ```bash
-   pip install -r requirements.txt
+Open `PDS_PROJECT.ipynb` and run cells in order. Update the dependency list if the notebook imports additional libraries.
 
-3. Run the Python script:
-   ```bash
-   python ticket_prediction.py
+## Modeling notes
 
-## Results
+Linear regression assumptions should be checked against the actual data. Use time-aware or grouped validation where applicable, avoid leakage from future or target-derived fields, and report MAE/RMSE/R² together with the split and preprocessing details. Predictions are not guaranteed to reflect current market prices.
 
-The model predicts airline ticket prices based on various input features and provides insights into key factors influencing ticket costs. Results include:
+See [docs/data.md](docs/data.md), [docs/reproducibility.md](docs/reproducibility.md), and [docs/development.md](docs/development.md).
 
-Prediction accuracy score (R² and Mean Absolute Error).
-Graphical insights showing trends in ticket pricing.
-
------------------------------------------------------------------------------------------------------------------------------
-
-
-
+Maintained by Brajesh Kumar (`brajesh31`).
