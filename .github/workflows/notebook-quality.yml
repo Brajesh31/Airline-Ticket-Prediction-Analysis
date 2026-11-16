@@ -1,0 +1,74 @@
+name: Notebook quality
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "PDS_PROJECT.ipynb"
+      - "requirements.txt"
+      - ".github/workflows/notebook-quality.yml"
+  pull_request:
+    paths:
+      - "PDS_PROJECT.ipynb"
+      - "requirements.txt"
+      - ".github/workflows/notebook-quality.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - name: Install notebook dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Validate notebook structure and code syntax
+        run: |
+          python - <<'PY'
+          import ast
+          import json
+          from pathlib import Path
+
+          notebook_path = Path("PDS_PROJECT.ipynb")
+          notebook = json.loads(notebook_path.read_text(encoding="utf-8"))
+          if notebook.get("nbformat") != 4:
+              raise SystemExit("Expected a Jupyter Notebook v4 document")
+          cells = notebook.get("cells")
+          if not isinstance(cells, list) or not cells:
+              raise SystemExit("Notebook has no cells")
+          code_cells = 0
+          for number, cell in enumerate(cells, start=1):
+              if cell.get("cell_type") == "code":
+                  code_cells += 1
+                  source = cell.get("source", "")
+                  source = "".join(source) if isinstance(source, list) else source
+                  if source.strip():
+                      # Syntax validation only. Execution requires the external CSV.
+                      ast.parse(source, filename=f"notebook-cell-{number}")
+          if not code_cells:
+              raise SystemExit("Notebook has no code cells")
+          print(f"Valid notebook: {len(cells)} cells, {code_cells} code cells")
+          PY
+      - name: Check Markdown links to repository files
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          readme = Path("README.md").read_text(encoding="utf-8")
+          for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", readme):
+              if target.startswith(("http://", "https://", "#", "mailto:")):
+                  continue
+              local = target.split("#", 1)[0]
+              if local and not (Path("README.md").parent / local).exists():
+                  raise SystemExit(f"Broken README link: {target}")
+          print("README relative links are valid")
+          PY
