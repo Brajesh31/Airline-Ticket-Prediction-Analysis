@@ -1,0 +1,6 @@
+# Direct dependencies used by PDS_PROJECT.ipynb
+# Versions are bounded for reproducible classroom/lab execution.
+jupyter>=1.0,<2.0
+pandas>=2.0,<3.0
+matplotlib>=3.7,<4.0
+scikit-learn>=1.3,<2.0
