@@ -1,18 +1,46 @@
-# Architecture
+# Project architecture
 
-The project is one interactive notebook, not a packaged application.
+## Current architecture
+
+This repository is a single-notebook analysis project. It does not contain a separately packaged application, service layer, database, or model-serving endpoint.
 
 ```text
-CSV in Colab /content path -> pandas DataFrame -> plots
-                           -> LabelEncoder features
-                           -> train_test_split
-                           -> LinearRegression
-                           -> MSE and R-squared
-                           -> example prediction
+Authorized external CSV
+        |
+        v
+PDS_PROJECT.ipynb
+        |
+        +--> pandas DataFrame loading
+        |
+        +--> Matplotlib exploratory plots
+        |
+        +--> LabelEncoder preprocessing
+        |
+        +--> train_test_split (80/20, random_state=42)
+        |
+        +--> LinearRegression fit
+        |
+        +--> MSE and R-squared output
+        |
+        +--> illustrative single-row prediction
 ```
 
-Nine predictors are used: airline, source city, departure time, stops, arrival time, destination city, class, duration and days-left. `PRICE` is the target. No reusable module, CLI, persisted model, API or application is present.
+## Main components
 
-Risks include encoders fitted before splitting, nominal categories interpreted as ordered integers, numeric fields encoded as labels, random splitting of related records, example prediction depending on known categories, and a flight-number plot label that does not match its x series.
+**Input:** A CSV with the column names referenced in the notebook. The file is absent from the Git repository.
 
-A future design should separate loading/validation, exploration, preprocessing, split strategy, training and evaluation. A Pipeline and ColumnTransformer should fit transforms only on training folds. This is proposed work, not current functionality.
+**Exploration:** pandas loads the tabular data. Matplotlib plots price against days remaining and contains a second chart with a known label/data mismatch.
+
+**Preprocessing:** LabelEncoder is applied to selected fields. It is currently fitted over the complete data before the split. This should be changed in a future modeling revision to ensure transformations are learned only from training folds.
+
+**Estimator:** scikit-learn LinearRegression estimates a continuous ticket-price target from nine selected predictors.
+
+**Evaluation:** The notebook calculates mean squared error and R-squared for a random held-out partition. No automated benchmark or statistical validation pipeline is included.
+
+## Boundaries
+
+The following components do not exist in the current repository: a REST API, front-end user interface, persistent database, ingestion scheduler, model registry, packaged inference service, monitoring, authentication, or deployment infrastructure. The API and database guides explicitly document that these are not present.
+
+## Suggested future separation
+
+If the notebook grows into a maintained application, consider separating data validation, feature preprocessing, model training, evaluation, and inference into tested Python modules. Keep notebooks for exploration and communication, and make the training pipeline reusable and testable outside the notebook.
