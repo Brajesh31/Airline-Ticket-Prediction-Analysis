@@ -1,26 +1,22 @@
 ## Summary
+Describe the purpose and scope of this change.
 
-Describe notebook, data, modeling or documentation changes.
-
-## Data provenance
-- Dataset source and license:
-- Collection period/version:
-- Schema changes:
-
-## Methodology
-- Features and target affected:
-- Preprocessing changes:
-- Split/validation strategy:
-- Metrics and baseline:
+## Change category
+- [ ] Notebook analysis or visualization
+- [ ] Data validation or preprocessing
+- [ ] Model evaluation
+- [ ] Documentation
+- [ ] Repository automation or maintenance
 
 ## Validation
 - [ ] Notebook JSON is valid.
-- [ ] Notebook was run from a clean kernel, or limitation is explained.
-- [ ] No preprocessing leakage was introduced.
-- [ ] Metrics include units and split details.
-- [ ] No private data, credentials or unlicensed data was added.
-- [ ] Documentation and limitations were updated.
+- [ ] Relevant cells or checks were run, or execution limitations are stated.
+- [ ] Documentation and links match the code.
+- [ ] No credentials, private passenger data, or restricted dataset rows are included.
 
-## Risks and follow-up
+## Evidence
+Include reproducible output, screenshots, or metric tables where relevant. State the dataset version and validation split for model results.
 
-Describe caveats and remaining work.
+## Checklist
+- [ ] I reviewed the contribution and security guidance.
+- [ ] I did not claim unverified model performance.
