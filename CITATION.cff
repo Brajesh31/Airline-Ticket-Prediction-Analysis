@@ -5,12 +5,12 @@ type: software
 authors:
   - family-names: Kumar
     given-names: Brajesh
-    affiliation: "Independent"
-repository-code: "https://github.com/brajesh31/Airline-Ticket-Prediction-Analysis"
-abstract: "A notebook-based airline ticket price regression analysis."
+repository-code: "https://github.com/Brajesh31/Airline-Ticket-Prediction-Analysis"
+abstract: "A notebook-based airline ticket price exploratory analysis and baseline regression exercise."
 keywords:
-  - machine learning
+  - airline fares
+  - exploratory data analysis
   - regression
-  - ticket prices
+  - machine learning
 license: MIT
 version: 0.1.0
