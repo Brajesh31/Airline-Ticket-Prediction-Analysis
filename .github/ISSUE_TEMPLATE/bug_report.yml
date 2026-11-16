@@ -1,0 +1,36 @@
+name: Bug report
+description: Report a reproducible problem in the notebook, documentation, or repository automation.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Search existing issues before submitting. Never attach private passenger or booking data."
+  - type: textarea
+    id: summary
+    attributes:
+      label: Problem summary
+      description: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Include the notebook cell or command and a minimal synthetic example.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Python, operating system, and relevant package versions.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error output
+      description: Remove secrets, personal data, and restricted dataset rows before sharing.
+    validations:
+      required: false
