@@ -1,0 +1,33 @@
+name: Feature request
+description: Propose a useful, evidence-based improvement to the analysis.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: What limitation should this address?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Describe the expected behaviour or analysis.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation plan
+      description: How should correctness or model quality be measured?
+    validations:
+      required: true
+  - type: checkboxes
+    id: data
+    attributes:
+      label: Data and privacy
+      options:
+        - label: This proposal does not require publishing restricted or personal passenger data.
+          required: true
