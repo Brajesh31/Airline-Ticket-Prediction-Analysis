@@ -1,16 +1,17 @@
 cff-version: 1.2.0
-title: "Airline Ticket Prediction Analysis"
-message: "If you use this software, please cite the repository."
+message: "If you use this software, please cite it as below."
 type: software
+title: "Airline Ticket Prediction Analysis"
 authors:
   - family-names: Kumar
     given-names: Brajesh
+version: 0.1.0
+date-released: 2026-11-16
 repository-code: "https://github.com/Brajesh31/Airline-Ticket-Prediction-Analysis"
-abstract: "A notebook-based airline ticket price exploratory analysis and baseline regression exercise."
+license: MIT
+abstract: "A Jupyter Notebook project for exploratory airline fare analysis and an educational baseline regression exercise."
 keywords:
   - airline fares
   - exploratory data analysis
   - regression
   - machine learning
-license: MIT
-version: 0.1.0
