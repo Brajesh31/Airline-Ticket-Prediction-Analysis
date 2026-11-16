@@ -19,11 +19,31 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Check out repository
         uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Validate notebook JSON
-        run: python -c "import json; json.load(open('PDS_PROJECT.ipynb', encoding='utf-8')); print('Notebook JSON is valid')"
+      - name: Validate notebook JSON and Python syntax
+        run: |
+          python - <<'PY'
+          import ast
+          import json
+          from pathlib import Path
+
+          path = Path("PDS_PROJECT.ipynb")
+          notebook = json.loads(path.read_text(encoding="utf-8"))
+          if notebook.get("nbformat") != 4:
+              raise SystemExit("Expected Jupyter Notebook format 4")
+          cells = notebook.get("cells", [])
+          if not cells:
+              raise SystemExit("Notebook has no cells")
+          for index, cell in enumerate(cells, start=1):
+              if cell.get("cell_type") == "code":
+                  source = cell.get("source", "")
+                  source = "".join(source) if isinstance(source, list) else source
+                  if source.strip():
+                      ast.parse(source, filename=f"cell-{index}")
+          print(f"Validated {len(cells)} notebook cells")
+          PY
