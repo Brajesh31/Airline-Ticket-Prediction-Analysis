@@ -1,3 +1,3 @@
-# Data storage
+# Database and persistence
 
-No database is defined. The notebook uses local data and in-memory data frames. Future storage should document provenance, schema, access controls, retention, and training/evaluation isolation.
+No database is implemented. The notebook loads a CSV into a pandas DataFrame and performs analysis in memory. If persistence is added, document schema, provenance, access controls, retention, refresh, model metadata and deletion. Keep training and evaluation partitions separate. Avoid passenger identity and payment information.

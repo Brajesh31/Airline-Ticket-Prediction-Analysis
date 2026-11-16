@@ -1,27 +1,20 @@
 # Documentation
 
-Project guide for the airline ticket price analysis notebook.
+Project guide for this notebook.
 
-## Start here
 - [Installation](installation.md)
-- [Data provenance and schema](data.md)
-- [Analysis architecture](architecture.md)
+- [Data and provenance](data.md)
+- [Architecture](architecture.md)
 - [Modeling methodology](modeling.md)
 - [Reproducibility](reproducibility.md)
 - [Development](development.md)
 - [Testing](testing.md)
-- [Troubleshooting](troubleshooting.md)
-
-## Status and policies
-- [Deployment](deployment.md)
-- [API](api.md)
-- [Database](database.md)
+- [Deployment status](deployment.md)
+- [API status](api.md)
+- [Database status](database.md)
 - [Privacy](privacy.md)
 - [Known limitations](limitations.md)
 - [FAQ](faq.md)
-- [Contributing](../CONTRIBUTING.md)
-- [Security](../SECURITY.md)
-- [Support](../SUPPORT.md)
-- [Code of Conduct](../CODE_OF_CONDUCT.md)
-- [Roadmap](../ROADMAP.md)
-- [Changelog](../CHANGELOG.md)
+- [Troubleshooting](troubleshooting.md)
+
+Policies: [Contributing](../CONTRIBUTING.md), [Security](../SECURITY.md), [Support](../SUPPORT.md), [Code of Conduct](../CODE_OF_CONDUCT.md), [Roadmap](../ROADMAP.md), [Changelog](../CHANGELOG.md).

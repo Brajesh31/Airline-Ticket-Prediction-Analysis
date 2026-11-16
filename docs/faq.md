@@ -1,13 +1,25 @@
 # FAQ
 
-## Is this a live pricing tool?
+## Is this a live fare predictor?
+No. It is an educational notebook with an illustrative linear regression baseline.
 
-No. It is an educational notebook.
+## Where is the CSV?
+The notebook expects `AIRLINES DATASET PRACTICAL - Sheet1.csv` in Colab `/content`. It is not included.
 
-## Are predictions guaranteed?
+## Why does it fail locally?
+Update the hard-coded `pd.read_csv` path to a permitted local copy.
 
-No. Model quality depends on data, features, assumptions, and validation.
+## What model is implemented?
+scikit-learn LinearRegression.
 
-## Why avoid random splitting?
+## Are prices guaranteed?
+No. Outputs are not live quotes and depend on data freshness, quality and validation.
 
-Random splitting can leak future, route, or related observations into evaluation data.
+## Why is LabelEncoder a concern?
+Nominal codes can be treated as ordered values, and current encoders are fitted before splitting.
+
+## Is there a database or API?
+No.
+
+## What should improve first?
+Document provenance/license, correct preprocessing, select representative validation and compare against a baseline using MAE/RMSE as well as R-squared.
